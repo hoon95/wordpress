@@ -668,7 +668,7 @@ img {
 
 #content img {
     margin: 0;
-    height: auto;
+    /* height: auto; */
     width: auto;
 }
 

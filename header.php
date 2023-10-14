@@ -39,11 +39,15 @@
     <nav class="menu main">
         <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
         <div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Latest news</a></li>
-            <li><a href="#">Featured articles</a></li>
-        </ul>
+        <?php 
+        wp_nav_menu(array( 
+            'theme_location' => 'header-menu',
+            'fallback_cb' => false,
+            'container' => '',
+            'menu_class' => 'main-menu'
+        ));
+        ?>
+        <?php get_search_form(); ?>
     </nav><!-- .main -->
 
     <div class="main">
