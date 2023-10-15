@@ -1,25 +1,16 @@
-<?php
-get_header();
-?>
+<?php get_header(); ?>
+
+<main class="content">
+    <div class="container">
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+        <?php the_content(); ?></a></h2>
 
 
-<div id="content" class="two-thirds">
-    <!-- loop start -->
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <li>
-        <!-- Display the Title as a link to the Post's permalink. -->
-        <h2><a href="<?php the_permalink(); ?>" rel="bookmark"
-                title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-    </li>
+        <?php endwhile; else : ?>
+        <p><?php esc_html_e( '조회 결과가 없습니다' ); ?></p>
+        <?php endif; ?>
+    </div>
 
-    <?php endwhile; else : ?>
 
-    <!-- loop stop -->
-    <?php endif; ?>
-
-</div><!-- #content-->
-
-<?php
-get_footer();
-
-?>
+    <?php get_footer(); ?>

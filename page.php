@@ -1,30 +1,16 @@
-<?php
-  get_header();
-?>
+<?php get_header(); ?>
 
-<div id="content" class="two-thirds">
-    <h2>Page Template</h2>
-    <h3><?php the_title(); ?></h3>
-    <?php the_content(); ?>
-</div><!-- #content-->
+<main class="content">
+    <div class="container">
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<!-- the sidebar - in WordPress this will be populated with widgets -->
-<aside class="sidebar widget-area one-third right" role="complementary">
+        <?php the_content(); ?></a></h2>
 
-    <div class="widget-container">
-        <h3 class="widget-title">A sidebar widget</h3>
-        <p>This is a sidebar widget - in your WordPress theme you can set these up to display across your site.</p>
-    </div><!-- .widget-container -->
 
-    <div class="widget-container">
-        <h3 class="widget-title" 3>Another sidebar widget</h3>
-        <p>A second sidebar widget - maybe you could use a plugin to display a social media feed, or simply list your
-            most
-            recent posts.</p>
-    </div><!-- .widget-container -->
+        <?php endwhile; else : ?>
+        <p><?php esc_html_e( '조회 결과가 없습니다' ); ?></p>
+        <?php endif; ?>
+    </div>
 
-</aside>
 
-<?php
-  get_footer();
-?>
+    <?php get_footer(); ?>
