@@ -2,12 +2,14 @@
 
     <hr class="portfolio">
        <ul class="portfolio_links">
-           <li><a href="http://localhost/wp/category/portfolio/" class="secondary-btn">All</a></li>
+           
            <!-- <li><a href="" class="secondary-btn">Print</a></li>
            <li><a href="" class="secondary-btn">Web</a></li>
            <li><a href="" class="secondary-btn">Mobile</a></li> -->
 
            <?php
+           $currentUri = $_SERVER['REQUEST_URI']; 
+
             $categories = get_categories( array(
               'orderby' => 'name',
               'order'   => 'ASC',
@@ -15,9 +17,20 @@
               'child_of' =>  '5' //현 테마의 portfolio 카테고리의 id
             ) );
 
+            $urlArr = explode('/',$currentUri);
+            $urlArrCount = count($urlArr);
+            $lastUrl = $urlArr[$urlArrCount-2];
+
+            if($lastUrl === 'portfolio'){$allClass='active';} else{$allClass='';}
+
+            echo '<li><a href="http://localhost/wp/category/portfolio/" class="secondary-btn '.$allClass.'">All</a></li>';
+
             foreach( $categories as $category ) {
+              $is_current = strpos($currentUri,strtolower($category->name));    
+              $is_current ? $activeClass = 'active':$activeClass = '';
+
               $category_link = sprintf( 
-                '<a class="secondary-btn" href="%1$s">%2$s</a>',
+                '<a class="secondary-btn '.$activeClass.'" href="%1$s" >%2$s</a>',
                 esc_url( get_category_link( $category->term_id ) ),
                 esc_html( $category->name )
               );

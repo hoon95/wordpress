@@ -199,6 +199,9 @@ hr.portfolio{
 }
 .portfolio_info .nav a{
     margin:12px 3px;
+    color: var(--highlight-color);
+    text-decoration: none;
+    
 }
 .portfolio_info blockquote{
     font-style: italic;

@@ -23,7 +23,7 @@
             </div>
             <div class="row list">
 
-                <!-- 카테고리 portfolio 최근거 3개 출력 -->
+                <!-- 카테고리 portfolio 최근 3개 출력 -->
 
                 <?php
 
@@ -53,13 +53,6 @@
                     endwhile;
                     wp_reset_query();
                     ?>
-
-
-
-
-      
-
-                
                 
             </div>
             <p class="porfolio_readmore">
